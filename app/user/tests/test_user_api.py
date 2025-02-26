@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 
-from rest_framework.test import APICLient
+from rest_framework.test import APIClient
 from rest_framework import status
 
 
@@ -14,7 +14,7 @@ def create_user(**params):
 
 class PublickUserApiTests(TestCase):
     def setUp(self):
-        self.client = APICLient()
+        self.client = APIClient()
 
     def test_create_user_success(self):
         payload = {
