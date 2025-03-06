@@ -35,6 +35,7 @@ def create_recipe(user, **params):
     recipe = Recipe.objects.create(user=user, **defaults)
     return recipe
 
+
 def create_user(**params):
     return get_user_model().objects.create_user(**params)
 
@@ -67,7 +68,10 @@ class PrivateRecipeApiTests(TestCase):
         self.assertEqual(res.data, serializer.data)
 
     def test_recipe_list_limited_to_user(self):
-        other_user = create_user(email='otheruser@example.com', password='test123')
+        other_user = create_user(
+            email='otheruser@example.com',
+            password='test123'
+        )
         create_recipe(user=other_user)
         create_recipe(user=self.user)
 
